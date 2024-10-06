@@ -1,7 +1,7 @@
 import type MagicString from 'magic-string';
 import ExternalModule from '../../ExternalModule';
 import type Module from '../../Module';
-import type { AstNode, GetInterop, NormalizedOutputOptions } from '../../rollup/types';
+import type { ast, GetInterop, NormalizedOutputOptions } from '../../rollup/types';
 import { EMPTY_ARRAY } from '../../utils/blank';
 import type { GenerateCodeSnippets } from '../../utils/generateCodeSnippets';
 import {
@@ -41,7 +41,7 @@ export default class ImportExpression extends NodeBase {
 	inlineNamespace: NamespaceVariable | null = null;
 	declare source: ExpressionNode;
 	declare type: NodeType.tImportExpression;
-	declare sourceAstNode: AstNode;
+	declare sourceAstNode: ast.Expression;
 
 	private hasUnknownAccessedKey = false;
 	private accessedPropKey = new Set<string>();
