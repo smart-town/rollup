@@ -312,7 +312,7 @@ type LoadResult = string | null | SourceDescription;
 interface SourceDescription {
 	code: string;
 	map?: string | SourceMap;
-	ast?: ESTree.Program;
+	ast?: ast.Program;
 	attributes?: { [key: string]: string } | null;
 	meta?: { [plugin: string]: any } | null;
 	moduleSideEffects?: boolean | 'no-treeshake' | null;
@@ -660,7 +660,7 @@ type TransformResult = string | null | Partial<SourceDescription>;
 interface SourceDescription {
 	code: string;
 	map?: string | SourceMap;
-	ast?: ESTree.Program;
+	ast?: ast.Program;
 	attributes?: { [key: string]: string } | null;
 	meta?: { [plugin: string]: any } | null;
 	moduleSideEffects?: boolean | 'no-treeshake' | null;
@@ -1529,7 +1529,7 @@ or converted into an Array via `Array.from(this.getModuleIds())`.
 interface ModuleInfo {
 	id: string; // the id of the module, for convenience
 	code: string | null; // the source code of the module, `null` if external or not yet available
-	ast: ESTree.Program; // the parsed abstract syntax tree if available
+	ast: ast.Program; // the parsed abstract syntax tree if available
 	hasDefaultExport: boolean | null; // is there a default export, `null` if external or not yet available
 	isEntry: boolean; // is this a user- or plugin-defined entry point
 	isExternal: boolean; // for external modules that are referenced but not included in the graph
@@ -1762,9 +1762,9 @@ An object containing potentially useful Rollup metadata:
 
 ### this.parse
 
-|       |                                                            |
-| ----: | :--------------------------------------------------------- |
-| Type: | `(code: string, options?: ParseOptions) => ESTree.Program` |
+|       |                                                         |
+| ----: | :------------------------------------------------------ |
+| Type: | `(code: string, options?: ParseOptions) => ast.Program` |
 
 ```typescript
 interface ParseOptions {

@@ -110,9 +110,6 @@
   "optionalDependencies": {
     "fsevents": "~2.3.2"
   },
-  "dependencies": {
-    "@types/estree": "1.0.6"
-  },
   "devDependenciesComments": {
     "core-js": "We only update manually as every update requires a snapshot update"
   },
