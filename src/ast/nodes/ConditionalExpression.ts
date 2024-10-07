@@ -20,10 +20,10 @@ import type { ExpressionNode, IncludeChildren } from './shared/Node';
 import { NodeBase } from './shared/Node';
 
 export default class ConditionalExpression extends NodeBase implements DeoptimizableEntity {
-	declare alternate: ExpressionNode;
-	declare consequent: ExpressionNode;
-	declare test: ExpressionNode;
-	declare type: NodeType.tConditionalExpression;
+	alternate!: ExpressionNode;
+	consequent!: ExpressionNode;
+	test!: ExpressionNode;
+	type!: NodeType.tConditionalExpression;
 
 	get isBranchResolutionAnalysed(): boolean {
 		return isFlagSet(this.flags, Flag.isBranchResolutionAnalysed);

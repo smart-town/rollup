@@ -15,10 +15,10 @@ import type * as NodeType from './NodeType';
 import { type IncludeChildren, NodeBase, type StatementNode } from './shared/Node';
 
 export default class Program extends NodeBase {
-	declare body: readonly StatementNode[];
-	declare sourceType: 'module';
-	declare type: NodeType.tProgram;
-	declare invalidAnnotations?: readonly ast.Annotation[];
+	body!: readonly StatementNode[];
+	sourceType!: 'module';
+	type!: NodeType.tProgram;
+	invalidAnnotations?: readonly ast.Annotation[];
 
 	private hasCachedEffect: boolean | null = null;
 	private hasLoggedEffect = false;

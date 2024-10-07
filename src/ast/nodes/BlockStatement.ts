@@ -11,8 +11,8 @@ import { UNKNOWN_EXPRESSION } from './shared/Expression';
 import { type IncludeChildren, type Node, StatementBase, type StatementNode } from './shared/Node';
 
 export default class BlockStatement extends StatementBase {
-	declare body: readonly StatementNode[];
-	declare type: NodeType.tBlockStatement;
+	body!: readonly StatementNode[];
+	type!: NodeType.tBlockStatement;
 
 	private get deoptimizeBody(): boolean {
 		return isFlagSet(this.flags, Flag.deoptimizeBody);

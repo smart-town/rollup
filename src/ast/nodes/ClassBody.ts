@@ -11,9 +11,9 @@ import { type GenericEsTreeNode, type IncludeChildren, NodeBase } from './shared
 import type StaticBlock from './StaticBlock';
 
 export default class ClassBody extends NodeBase {
-	declare body: (MethodDefinition | PropertyDefinition | StaticBlock)[];
-	declare scope: ClassBodyScope;
-	declare type: NodeType.tClassBody;
+	body!: (MethodDefinition | PropertyDefinition | StaticBlock)[];
+	scope!: ClassBodyScope;
+	type!: NodeType.tClassBody;
 
 	createScope(parentScope: ChildScope): void {
 		this.scope = new ClassBodyScope(parentScope, this.parent as ClassNode);

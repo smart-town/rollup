@@ -16,9 +16,9 @@ import { UNKNOWN_RETURN_EXPRESSION, UnknownValue } from './shared/Expression';
 import { type ExpressionNode, NodeBase } from './shared/Node';
 
 export default class TemplateLiteral extends NodeBase {
-	declare expressions: ExpressionNode[];
-	declare quasis: TemplateElement[];
-	declare type: NodeType.tTemplateLiteral;
+	expressions!: ExpressionNode[];
+	quasis!: TemplateElement[];
+	type!: NodeType.tTemplateLiteral;
 
 	deoptimizeArgumentsOnInteractionAtPath(): void {}
 

@@ -16,11 +16,11 @@ import {
 import { type ExpressionNode, NodeBase } from './shared/Node';
 
 export default class PropertyDefinition extends NodeBase {
-	declare key: ExpressionNode | PrivateIdentifier;
-	declare static: boolean;
-	declare type: NodeType.tPropertyDefinition;
-	declare value: ExpressionNode | null;
-	declare decorators: Decorator[];
+	key!: ExpressionNode | PrivateIdentifier;
+	static!: boolean;
+	type!: NodeType.tPropertyDefinition;
+	value!: ExpressionNode | null;
+	decorators!: Decorator[];
 
 	get computed(): boolean {
 		return isFlagSet(this.flags, Flag.computed);

@@ -5,9 +5,9 @@ import type * as NodeType from './NodeType';
 import { type ExpressionNode, NodeBase } from './shared/Node';
 
 export default class YieldExpression extends NodeBase {
-	declare argument: ExpressionNode | null;
-	declare delegate: boolean;
-	declare type: NodeType.tYieldExpression;
+	argument!: ExpressionNode | null;
+	delegate!: boolean;
+	type!: NodeType.tYieldExpression;
 
 	hasEffects(context: HasEffectsContext): boolean {
 		if (!this.deoptimized) this.applyDeoptimizations();

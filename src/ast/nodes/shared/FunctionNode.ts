@@ -23,13 +23,13 @@ import { OBJECT_PROTOTYPE } from './ObjectPrototype';
 import type { DeclarationPatternNode } from './Pattern';
 
 export default class FunctionNode extends FunctionBase {
-	declare body: BlockStatement;
-	declare id: IdentifierWithVariable | null;
-	declare params: DeclarationPatternNode[];
-	declare preventChildBlockScope: true;
-	declare scope: FunctionScope;
+	body!: BlockStatement;
+	id!: IdentifierWithVariable | null;
+	params!: DeclarationPatternNode[];
+	preventChildBlockScope!: true;
+	scope!: FunctionScope;
 	protected objectEntity: ObjectEntity | null = null;
-	private declare constructedEntity: ObjectEntity;
+	private constructedEntity!: ObjectEntity;
 
 	createScope(parentScope: ChildScope): void {
 		this.scope = new FunctionScope(parentScope);

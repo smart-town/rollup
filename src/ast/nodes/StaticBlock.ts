@@ -12,8 +12,8 @@ import * as NodeType from './NodeType';
 import { type IncludeChildren, StatementBase, type StatementNode } from './shared/Node';
 
 export default class StaticBlock extends StatementBase {
-	declare body: readonly StatementNode[];
-	declare type: NodeType.tStaticBlock;
+	body!: readonly StatementNode[];
+	type!: NodeType.tStaticBlock;
 
 	createScope(parentScope: ChildScope): void {
 		this.scope = new BlockScope(parentScope);

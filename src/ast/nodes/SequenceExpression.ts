@@ -17,8 +17,8 @@ import type { LiteralValueOrUnknown } from './shared/Expression';
 import { type ExpressionNode, type IncludeChildren, NodeBase } from './shared/Node';
 
 export default class SequenceExpression extends NodeBase {
-	declare expressions: ExpressionNode[];
-	declare type: NodeType.tSequenceExpression;
+	expressions!: ExpressionNode[];
+	type!: NodeType.tSequenceExpression;
 
 	deoptimizeArgumentsOnInteractionAtPath(
 		interaction: NodeInteraction,

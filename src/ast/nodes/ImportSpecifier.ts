@@ -4,9 +4,9 @@ import type * as NodeType from './NodeType';
 import { NodeBase } from './shared/Node';
 
 export default class ImportSpecifier extends NodeBase {
-	declare imported: Identifier | Literal<string>;
-	declare local: Identifier;
-	declare type: NodeType.tImportSpecifier;
+	imported!: Identifier | Literal<string>;
+	local!: Identifier;
+	type!: NodeType.tImportSpecifier;
 
 	protected applyDeoptimizations() {}
 }

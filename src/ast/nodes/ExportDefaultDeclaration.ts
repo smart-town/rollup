@@ -34,13 +34,13 @@ function getFunctionIdInsertPosition(code: string, start: number): number {
 }
 
 export default class ExportDefaultDeclaration extends NodeBase {
-	declare declaration: FunctionDeclaration | ClassDeclaration | ExpressionNode;
-	declare needsBoundaries: true;
-	declare scope: ModuleScope;
-	declare type: NodeType.tExportDefaultDeclaration;
-	declare variable: ExportDefaultVariable;
+	declaration!: FunctionDeclaration | ClassDeclaration | ExpressionNode;
+	needsBoundaries!: true;
+	scope!: ModuleScope;
+	type!: NodeType.tExportDefaultDeclaration;
+	variable!: ExportDefaultVariable;
 
-	private declare declarationName: string | undefined;
+	private declarationName!: string | undefined;
 
 	includePath(
 		path: ObjectPath,

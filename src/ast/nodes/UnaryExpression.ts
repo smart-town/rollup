@@ -21,9 +21,9 @@ const unaryOperators: Record<string, (value: LiteralValue) => LiteralValueOrUnkn
 };
 
 export default class UnaryExpression extends NodeBase {
-	declare argument: ExpressionNode;
-	declare operator: '!' | '+' | '-' | 'delete' | 'typeof' | 'void' | '~';
-	declare type: NodeType.tUnaryExpression;
+	argument!: ExpressionNode;
+	operator!: '!' | '+' | '-' | 'delete' | 'typeof' | 'void' | '~';
+	type!: NodeType.tUnaryExpression;
 
 	get prefix(): boolean {
 		return isFlagSet(this.flags, Flag.prefix);

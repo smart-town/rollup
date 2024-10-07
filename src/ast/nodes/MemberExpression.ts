@@ -100,13 +100,13 @@ export default class MemberExpression
 	extends NodeBase
 	implements DeoptimizableEntity, ChainElement, PatternNode
 {
-	declare object: ExpressionNode | Super;
-	declare property: ExpressionNode | PrivateIdentifier;
-	declare propertyKey: ObjectPathKey | null;
-	declare type: NodeType.tMemberExpression;
+	object!: ExpressionNode | Super;
+	property!: ExpressionNode | PrivateIdentifier;
+	propertyKey!: ObjectPathKey | null;
+	type!: NodeType.tMemberExpression;
 	variable: Variable | null = null;
-	protected declare assignmentInteraction: NodeInteractionAssigned;
-	private declare accessInteraction: NodeInteractionAccessed;
+	protected assignmentInteraction!: NodeInteractionAssigned;
+	private accessInteraction!: NodeInteractionAccessed;
 	private expressionsToBeDeoptimized: DeoptimizableEntity[] = [];
 
 	get computed(): boolean {

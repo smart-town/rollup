@@ -17,7 +17,7 @@ export default class JSXElementBase extends NodeBase {
 
 	protected factoryVariable: Variable | null = null;
 	protected factory: string | null = null;
-	protected declare jsxMode: JsxMode;
+	protected jsxMode!: JsxMode;
 
 	initialise() {
 		super.initialise();

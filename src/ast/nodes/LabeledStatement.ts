@@ -15,9 +15,9 @@ import type * as NodeType from './NodeType';
 import { type IncludeChildren, StatementBase, type StatementNode } from './shared/Node';
 
 export default class LabeledStatement extends StatementBase {
-	declare body: StatementNode;
-	declare label: Identifier;
-	declare type: NodeType.tLabeledStatement;
+	body!: StatementNode;
+	label!: Identifier;
+	type!: NodeType.tLabeledStatement;
 
 	hasEffects(context: HasEffectsContext): boolean {
 		const { brokenFlow, includedLabels } = context;

@@ -14,12 +14,12 @@ import type { ExpressionNode, GenericEsTreeNode, IncludeChildren } from './share
 import { StatementBase } from './shared/Node';
 
 export default class SwitchStatement extends StatementBase {
-	declare cases: readonly SwitchCase[];
-	declare discriminant: ExpressionNode;
-	declare type: NodeType.tSwitchStatement;
+	cases!: readonly SwitchCase[];
+	discriminant!: ExpressionNode;
+	type!: NodeType.tSwitchStatement;
 
-	declare parentScope: ChildScope;
-	private declare defaultCase: number | null;
+	parentScope!: ChildScope;
+	private defaultCase!: number | null;
 
 	createScope(parentScope: ChildScope): void {
 		this.parentScope = parentScope;
