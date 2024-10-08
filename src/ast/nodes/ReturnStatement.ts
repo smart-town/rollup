@@ -4,9 +4,9 @@ import { type HasEffectsContext, type InclusionContext } from '../ExecutionConte
 import { type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
 import type * as NodeType from './NodeType';
 import { UNKNOWN_EXPRESSION } from './shared/Expression';
-import { type ExpressionNode, type IncludeChildren, StatementBase } from './shared/Node';
+import { type ExpressionNode, type IncludeChildren, NodeBase } from './shared/Node';
 
-export default class ReturnStatement extends StatementBase {
+export default class ReturnStatement extends NodeBase {
 	argument!: ExpressionNode | null;
 	type!: NodeType.tReturnStatement;
 

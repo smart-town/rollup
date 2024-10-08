@@ -5,16 +5,16 @@ import BlockScope from '../scopes/BlockScope';
 import type ChildScope from '../scopes/ChildScope';
 import { type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
 import type * as NodeType from './NodeType';
-import type VariableDeclaration from './VariableDeclaration';
+import { hasLoopBodyEffects, includeLoopBody } from './shared/loops';
 import {
 	type ExpressionNode,
 	type IncludeChildren,
-	StatementBase,
+	NodeBase,
 	type StatementNode
 } from './shared/Node';
-import { hasLoopBodyEffects, includeLoopBody } from './shared/loops';
+import type VariableDeclaration from './VariableDeclaration';
 
-export default class ForStatement extends StatementBase {
+export default class ForStatement extends NodeBase {
 	body!: StatementNode;
 	init!: VariableDeclaration | ExpressionNode | null;
 	test!: ExpressionNode | null;

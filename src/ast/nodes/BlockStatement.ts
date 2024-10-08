@@ -8,9 +8,9 @@ import ExpressionStatement from './ExpressionStatement';
 import * as NodeType from './NodeType';
 import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
 import { UNKNOWN_EXPRESSION } from './shared/Expression';
-import { type IncludeChildren, type Node, StatementBase, type StatementNode } from './shared/Node';
+import { type IncludeChildren, type Node, NodeBase, type StatementNode } from './shared/Node';
 
-export default class BlockStatement extends StatementBase {
+export default class BlockStatement extends NodeBase {
 	body!: readonly StatementNode[];
 	type!: NodeType.tBlockStatement;
 

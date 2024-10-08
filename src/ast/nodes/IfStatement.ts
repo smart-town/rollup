@@ -13,13 +13,13 @@ import {
 	type ExpressionNode,
 	type GenericEsTreeNode,
 	type IncludeChildren,
-	StatementBase,
+	NodeBase,
 	type StatementNode
 } from './shared/Node';
 
 const unset = Symbol('unset');
 
-export default class IfStatement extends StatementBase implements DeoptimizableEntity {
+export default class IfStatement extends NodeBase implements DeoptimizableEntity {
 	alternate!: StatementNode | null;
 	consequent!: StatementNode;
 	test!: ExpressionNode;

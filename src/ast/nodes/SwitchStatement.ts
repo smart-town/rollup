@@ -9,11 +9,11 @@ import BlockScope from '../scopes/BlockScope';
 import type ChildScope from '../scopes/ChildScope';
 import { type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
 import type * as NodeType from './NodeType';
-import type SwitchCase from './SwitchCase';
 import type { ExpressionNode, GenericEsTreeNode, IncludeChildren } from './shared/Node';
-import { StatementBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
+import type SwitchCase from './SwitchCase';
 
-export default class SwitchStatement extends StatementBase {
+export default class SwitchStatement extends NodeBase {
 	cases!: readonly SwitchCase[];
 	discriminant!: ExpressionNode;
 	type!: NodeType.tSwitchStatement;

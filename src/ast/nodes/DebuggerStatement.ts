@@ -1,7 +1,7 @@
 import type * as NodeType from './NodeType';
-import { StatementBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
 
-export default class DebuggerStatement extends StatementBase {
+export default class DebuggerStatement extends NodeBase {
 	type!: NodeType.tDebuggerStatement;
 
 	hasEffects(): boolean {

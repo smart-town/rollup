@@ -4,9 +4,9 @@ import { logModuleLevelDirective } from '../../utils/logs';
 import type { RenderOptions } from '../../utils/renderHelpers';
 import type { InclusionContext } from '../ExecutionContext';
 import * as NodeType from './NodeType';
-import { type ExpressionNode, StatementBase } from './shared/Node';
+import { type ExpressionNode, NodeBase } from './shared/Node';
 
-export default class ExpressionStatement extends StatementBase {
+export default class ExpressionStatement extends NodeBase {
 	directive?: string;
 	expression!: ExpressionNode;
 

@@ -1,15 +1,15 @@
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import { type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
 import type * as NodeType from './NodeType';
+import { hasLoopBodyEffects, includeLoopBody } from './shared/loops';
 import {
 	type ExpressionNode,
 	type IncludeChildren,
-	StatementBase,
+	NodeBase,
 	type StatementNode
 } from './shared/Node';
-import { hasLoopBodyEffects, includeLoopBody } from './shared/loops';
 
-export default class DoWhileStatement extends StatementBase {
+export default class DoWhileStatement extends NodeBase {
 	body!: StatementNode;
 	test!: ExpressionNode;
 	type!: NodeType.tDoWhileStatement;

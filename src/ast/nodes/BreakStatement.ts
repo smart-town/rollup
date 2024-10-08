@@ -6,9 +6,9 @@ import {
 import { type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
 import type Identifier from './Identifier';
 import type * as NodeType from './NodeType';
-import { StatementBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
 
-export default class BreakStatement extends StatementBase {
+export default class BreakStatement extends NodeBase {
 	label!: Identifier | null;
 	type!: NodeType.tBreakStatement;
 

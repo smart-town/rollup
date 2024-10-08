@@ -12,9 +12,9 @@ import {
 import { type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
 import type Identifier from './Identifier';
 import type * as NodeType from './NodeType';
-import { type IncludeChildren, StatementBase, type StatementNode } from './shared/Node';
+import { type IncludeChildren, NodeBase, type StatementNode } from './shared/Node';
 
-export default class LabeledStatement extends StatementBase {
+export default class LabeledStatement extends NodeBase {
 	body!: StatementNode;
 	label!: Identifier;
 	type!: NodeType.tLabeledStatement;

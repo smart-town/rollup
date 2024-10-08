@@ -1,7 +1,7 @@
 import type * as NodeType from './NodeType';
-import { StatementBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
 
-export default class EmptyStatement extends StatementBase {
+export default class EmptyStatement extends NodeBase {
 	type!: NodeType.tEmptyStatement;
 
 	hasEffects(): boolean {
