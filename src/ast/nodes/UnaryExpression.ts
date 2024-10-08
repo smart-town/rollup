@@ -1,3 +1,4 @@
+import type { ast } from '../../rollup/types';
 import type { DeoptimizableEntity } from '../DeoptimizableEntity';
 import type { HasEffectsContext } from '../ExecutionContext';
 import type { NodeInteraction } from '../NodeInteractions';
@@ -10,7 +11,10 @@ import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
 import { type LiteralValueOrUnknown, UnknownValue } from './shared/Expression';
 import { type ExpressionNode, NodeBase } from './shared/Node';
 
-const unaryOperators: Record<string, (value: LiteralValue) => LiteralValueOrUnknown> = {
+const unaryOperators: Record<
+	ast.UnaryExpression['operator'],
+	(value: LiteralValue) => LiteralValueOrUnknown
+> = {
 	'!': value => !value,
 	'+': value => +(value as NonNullable<LiteralValue>),
 	'-': value => -(value as NonNullable<LiteralValue>),
@@ -22,7 +26,7 @@ const unaryOperators: Record<string, (value: LiteralValue) => LiteralValueOrUnkn
 
 export default class UnaryExpression extends NodeBase {
 	argument!: ExpressionNode;
-	operator!: '!' | '+' | '-' | 'delete' | 'typeof' | 'void' | '~';
+	operator!: ast.UnaryExpression['operator'];
 	type!: NodeType.tUnaryExpression;
 
 	get prefix(): boolean {

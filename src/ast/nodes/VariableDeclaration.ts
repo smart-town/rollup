@@ -1,4 +1,5 @@
 import type MagicString from 'magic-string';
+import type { ast } from '../../rollup/types';
 import { BLANK } from '../../utils/blank';
 import { isReassignedExportsMember } from '../../utils/reassignedExportsMember';
 import {
@@ -21,10 +22,9 @@ import ArrayPattern from './ArrayPattern';
 import Identifier, { type IdentifierWithVariable } from './Identifier';
 import * as NodeType from './NodeType';
 import ObjectPattern from './ObjectPattern';
-import type VariableDeclarator from './VariableDeclarator';
 import type { InclusionOptions } from './shared/Expression';
 import { type IncludeChildren, NodeBase } from './shared/Node';
-import type { VariableDeclarationKind } from './shared/VariableKinds';
+import type VariableDeclarator from './VariableDeclarator';
 
 function areAllDeclarationsIncludedAndNotExported(
 	declarations: readonly VariableDeclarator[],
@@ -45,7 +45,7 @@ function areAllDeclarationsIncludedAndNotExported(
 
 export default class VariableDeclaration extends NodeBase {
 	declarations!: readonly VariableDeclarator[];
-	kind!: VariableDeclarationKind;
+	kind!: ast.VariableDeclaration['kind'];
 	type!: NodeType.tVariableDeclaration;
 	isUsingDeclaration!: boolean;
 
