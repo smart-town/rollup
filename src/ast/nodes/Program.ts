@@ -11,11 +11,12 @@ import {
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import { createHasEffectsContext } from '../ExecutionContext';
 import { type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
+import type * as nodes from './node-unions';
 import type * as NodeType from './NodeType';
-import { type IncludeChildren, NodeBase, type StatementNode } from './shared/Node';
+import { type IncludeChildren, NodeBase } from './shared/Node';
 
-export default class Program extends NodeBase {
-	body!: readonly StatementNode[];
+export default class Program extends NodeBase<ast.Program> {
+	body!: readonly (nodes.Statement | nodes.ModuleDeclaration)[];
 	sourceType!: 'module';
 	type!: NodeType.tProgram;
 	invalidAnnotations?: readonly ast.Annotation[];

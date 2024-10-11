@@ -1,3 +1,4 @@
+import type { ast } from '../../rollup/types';
 import type { DeoptimizableEntity } from '../DeoptimizableEntity';
 import type { HasEffectsContext } from '../ExecutionContext';
 import type { NodeInteraction, NodeInteractionCalled } from '../NodeInteractions';
@@ -6,6 +7,7 @@ import { checkEffectForNodes } from '../utils/checkEffectForNodes';
 import type Decorator from './Decorator';
 import type * as NodeType from './NodeType';
 import type PrivateIdentifier from './PrivateIdentifier';
+import type * as nodes from './node-unions';
 import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
 import {
 	type ExpressionEntity,
@@ -13,13 +15,13 @@ import {
 	UNKNOWN_RETURN_EXPRESSION,
 	UnknownValue
 } from './shared/Expression';
-import { type ExpressionNode, NodeBase } from './shared/Node';
+import { NodeBase } from './shared/Node';
 
-export default class PropertyDefinition extends NodeBase {
-	key!: ExpressionNode | PrivateIdentifier;
+export default class PropertyDefinition extends NodeBase<ast.PropertyDefinition> {
+	key!: nodes.Expression | PrivateIdentifier;
 	static!: boolean;
 	type!: NodeType.tPropertyDefinition;
-	value!: ExpressionNode | null;
+	value!: nodes.Expression | null;
 	decorators!: Decorator[];
 
 	get computed(): boolean {

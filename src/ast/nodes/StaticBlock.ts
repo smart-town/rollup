@@ -1,4 +1,5 @@
 import type MagicString from 'magic-string';
+import type { ast } from '../../rollup/types';
 import {
 	findFirstOccurrenceOutsideComment,
 	type RenderOptions,
@@ -8,11 +9,12 @@ import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import BlockScope from '../scopes/BlockScope';
 import type ChildScope from '../scopes/ChildScope';
 import { type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
-import * as NodeType from './NodeType';
-import { type IncludeChildren, NodeBase, type StatementNode } from './shared/Node';
+import type * as nodes from './node-unions';
+import type * as NodeType from './NodeType';
+import { type IncludeChildren, NodeBase } from './shared/Node';
 
-export default class StaticBlock extends NodeBase {
-	body!: readonly StatementNode[];
+export default class StaticBlock extends NodeBase<ast.StaticBlock> {
+	body!: readonly nodes.Statement[];
 	type!: NodeType.tStaticBlock;
 
 	createScope(parentScope: ChildScope): void {
@@ -47,8 +49,4 @@ export default class StaticBlock extends NodeBase {
 			super.render(code, options);
 		}
 	}
-}
-
-export function isStaticBlock(statement: StatementNode): statement is StaticBlock {
-	return statement.type === NodeType.StaticBlock;
 }

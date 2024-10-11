@@ -1,4 +1,5 @@
 import type MagicString from 'magic-string';
+import type { ast } from '../../rollup/types';
 import type { RenderOptions } from '../../utils/renderHelpers';
 import type { DeoptimizableEntity } from '../DeoptimizableEntity';
 import { type HasEffectsContext, type InclusionContext } from '../ExecutionContext';
@@ -7,22 +8,17 @@ import type { ObjectPath } from '../utils/PathTracker';
 import { EMPTY_PATH, SHARED_RECURSION_TRACKER, UNKNOWN_PATH } from '../utils/PathTracker';
 import BlockStatement from './BlockStatement';
 import type Identifier from './Identifier';
+import type * as nodes from './node-unions';
 import * as NodeType from './NodeType';
 import { type LiteralValueOrUnknown, UnknownValue } from './shared/Expression';
-import {
-	type ExpressionNode,
-	type GenericEsTreeNode,
-	type IncludeChildren,
-	NodeBase,
-	type StatementNode
-} from './shared/Node';
+import { type IncludeChildren, NodeBase } from './shared/Node';
 
 const unset = Symbol('unset');
 
-export default class IfStatement extends NodeBase implements DeoptimizableEntity {
-	alternate!: StatementNode | null;
-	consequent!: StatementNode;
-	test!: ExpressionNode;
+export default class IfStatement extends NodeBase<ast.IfStatement> implements DeoptimizableEntity {
+	alternate!: nodes.Statement | null;
+	consequent!: nodes.Statement;
+	test!: nodes.Expression;
 	type!: NodeType.tIfStatement;
 
 	alternateScope?: TrackingScope;
@@ -69,13 +65,13 @@ export default class IfStatement extends NodeBase implements DeoptimizableEntity
 		}
 	}
 
-	parseNode(esTreeNode: GenericEsTreeNode): this {
-		this.consequent = new (this.scope.context.getNodeConstructor(esTreeNode.consequent.type))(
+	parseNode(esTreeNode: ast.IfStatement): this {
+		this.consequent = new (this.scope.context.getNodeConstructor<any>(esTreeNode.consequent.type))(
 			this,
 			(this.consequentScope = new TrackingScope(this.scope))
 		).parseNode(esTreeNode.consequent);
 		if (esTreeNode.alternate) {
-			this.alternate = new (this.scope.context.getNodeConstructor(esTreeNode.alternate.type))(
+			this.alternate = new (this.scope.context.getNodeConstructor<any>(esTreeNode.alternate.type))(
 				this,
 				(this.alternateScope = new TrackingScope(this.scope))
 			).parseNode(esTreeNode.alternate);
