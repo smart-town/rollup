@@ -324,6 +324,7 @@ export class ModuleLoader {
 			!(await this.pluginDriver.hookFirst('shouldTransformCachedModule', [
 				{
 					ast: cachedModule.ast,
+					attributes: cachedModule.attributes,
 					code: cachedModule.code,
 					id: cachedModule.id,
 					meta: cachedModule.meta,

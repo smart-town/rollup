@@ -297,6 +297,7 @@ export type ShouldTransformCachedModuleHook = (
 	this: PluginContext,
 	options: {
 		ast: ProgramNode;
+		attributes: Record<string, string>;
 		code: string;
 		id: string;
 		meta: CustomPluginOptions;
@@ -320,7 +321,7 @@ export type LoadHook = (
 	this: PluginContext,
 	id: string,
 	options: {
-		attributes: Record<string, any>;
+		attributes: Record<string, string>;
 	}
 ) => LoadResult;
 
