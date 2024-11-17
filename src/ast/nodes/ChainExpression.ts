@@ -5,6 +5,7 @@ import type { HasEffectsContext } from '../ExecutionContext';
 import type { EntityPathTracker, ObjectPath } from '../utils/PathTracker';
 import type CallExpression from './CallExpression';
 import type MemberExpression from './MemberExpression';
+import type { ChainExpressionParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import type { LiteralValueOrUnknown } from './shared/Expression';
 import { IS_SKIPPED_CHAIN, NodeBase } from './shared/Node';
@@ -13,6 +14,7 @@ export default class ChainExpression
 	extends NodeBase<ast.ChainExpression>
 	implements DeoptimizableEntity
 {
+	parent!: ChainExpressionParent;
 	expression!: CallExpression | MemberExpression;
 	type!: NodeType.tChainExpression;
 

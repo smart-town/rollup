@@ -7,12 +7,14 @@ import type ChildScope from '../scopes/ChildScope';
 import { type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
 import ExpressionStatement from './ExpressionStatement';
 import type * as nodes from './node-unions';
+import type { BlockStatementParent } from './node-unions';
 import * as NodeType from './NodeType';
 import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
 import { UNKNOWN_EXPRESSION } from './shared/Expression';
 import { type IncludeChildren, type Node, NodeBase } from './shared/Node';
 
 export default class BlockStatement extends NodeBase<ast.BlockStatement> {
+	parent!: BlockStatementParent;
 	body!: readonly nodes.Statement[];
 	type!: NodeType.tBlockStatement;
 

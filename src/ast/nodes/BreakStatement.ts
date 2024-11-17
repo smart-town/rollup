@@ -6,10 +6,12 @@ import {
 } from '../ExecutionContext';
 import { type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
 import type Identifier from './Identifier';
+import type { BreakStatementParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { NodeBase } from './shared/Node';
 
 export default class BreakStatement extends NodeBase<ast.BreakStatement> {
+	parent!: BreakStatementParent;
 	label!: Identifier | null;
 	type!: NodeType.tBreakStatement;
 

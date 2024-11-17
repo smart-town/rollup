@@ -12,12 +12,14 @@ import { INTERACTION_ACCESSED } from '../NodeInteractions';
 import { EMPTY_PATH, type ObjectPath } from '../utils/PathTracker';
 import Identifier from './Identifier';
 import type * as nodes from './node-unions';
+import type { UpdateExpressionParent } from './node-unions';
 import * as NodeType from './NodeType';
 import { UNKNOWN_EXPRESSION } from './shared/Expression';
 import type { IncludeChildren } from './shared/Node';
 import { NodeBase } from './shared/Node';
 
 export default class UpdateExpression extends NodeBase<ast.UpdateExpression> {
+	parent!: UpdateExpressionParent;
 	argument!: nodes.Expression;
 	operator!: ast.UpdateExpression['operator'];
 	prefix!: boolean;

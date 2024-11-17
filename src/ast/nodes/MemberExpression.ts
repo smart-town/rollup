@@ -38,6 +38,7 @@ import type Variable from '../variables/Variable';
 import Identifier from './Identifier';
 import Literal from './Literal';
 import type * as nodes from './node-unions';
+import type { MemberExpressionParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import type PrivateIdentifier from './PrivateIdentifier';
 import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
@@ -103,6 +104,7 @@ export default class MemberExpression
 	extends NodeBase<ast.MemberExpression>
 	implements DeoptimizableEntity, ChainElement, PatternNode
 {
+	parent!: MemberExpressionParent;
 	object!: nodes.Expression | Super;
 	property!: nodes.Expression | PrivateIdentifier;
 	propertyKey!: ObjectPathKey | null;

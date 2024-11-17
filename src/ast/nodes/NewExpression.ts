@@ -12,11 +12,13 @@ import {
 	UNKNOWN_PATH
 } from '../utils/PathTracker';
 import type * as nodes from './node-unions';
+import type { NewExpressionParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import type { IncludeChildren } from './shared/Node';
 import { NodeBase } from './shared/Node';
 
 export default class NewExpression extends NodeBase<ast.NewExpression> {
+	parent!: NewExpressionParent;
 	arguments!: nodes.Expression[];
 	callee!: nodes.Expression;
 	type!: NodeType.tNewExpression;

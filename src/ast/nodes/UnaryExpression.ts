@@ -7,6 +7,7 @@ import { EMPTY_PATH, type EntityPathTracker, type ObjectPath } from '../utils/Pa
 import Identifier from './Identifier';
 import type { LiteralValue } from './Literal';
 import type * as nodes from './node-unions';
+import type { UnaryExpressionParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
 import { type LiteralValueOrUnknown, UnknownValue } from './shared/Expression';
@@ -26,6 +27,7 @@ const unaryOperators: Record<
 };
 
 export default class UnaryExpression extends NodeBase<ast.UnaryExpression> {
+	parent!: UnaryExpressionParent;
 	argument!: nodes.Expression;
 	operator!: ast.UnaryExpression['operator'];
 	type!: NodeType.tUnaryExpression;

@@ -2,12 +2,13 @@ import type { ast } from '../../rollup/types';
 import type { DeoptimizableEntity } from '../DeoptimizableEntity';
 import type { HasEffectsContext } from '../ExecutionContext';
 import type { NodeInteraction, NodeInteractionCalled } from '../NodeInteractions';
-import type { EntityPathTracker, ObjectPath } from '../utils/PathTracker';
 import { checkEffectForNodes } from '../utils/checkEffectForNodes';
+import type { EntityPathTracker, ObjectPath } from '../utils/PathTracker';
 import type Decorator from './Decorator';
+import type * as nodes from './node-unions';
+import type { PropertyDefinitionParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import type PrivateIdentifier from './PrivateIdentifier';
-import type * as nodes from './node-unions';
 import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
 import {
 	type ExpressionEntity,
@@ -18,6 +19,7 @@ import {
 import { NodeBase } from './shared/Node';
 
 export default class PropertyDefinition extends NodeBase<ast.PropertyDefinition> {
+	parent!: PropertyDefinitionParent;
 	key!: nodes.Expression | PrivateIdentifier;
 	static!: boolean;
 	type!: NodeType.tPropertyDefinition;

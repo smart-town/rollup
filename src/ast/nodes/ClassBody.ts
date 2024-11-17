@@ -4,19 +4,20 @@ import type ChildScope from '../scopes/ChildScope';
 import ClassBodyScope from '../scopes/ClassBodyScope';
 import { type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
 import type MethodDefinition from './MethodDefinition';
+import type { ClassBodyParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import type PropertyDefinition from './PropertyDefinition';
-import type ClassNode from './shared/ClassNode';
 import { type IncludeChildren, NodeBase } from './shared/Node';
 import type StaticBlock from './StaticBlock';
 
 export default class ClassBody extends NodeBase<ast.ClassBody> {
+	parent!: ClassBodyParent;
 	body!: (MethodDefinition | PropertyDefinition | StaticBlock)[];
 	scope!: ClassBodyScope;
 	type!: NodeType.tClassBody;
 
 	createScope(parentScope: ChildScope): void {
-		this.scope = new ClassBodyScope(parentScope, this.parent as ClassNode<any>);
+		this.scope = new ClassBodyScope(parentScope, this.parent);
 	}
 
 	includePath(

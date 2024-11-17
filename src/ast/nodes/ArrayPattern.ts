@@ -5,6 +5,7 @@ import { EMPTY_PATH, type ObjectPath, UnknownInteger, UnknownKey } from '../util
 import type LocalVariable from '../variables/LocalVariable';
 import type Variable from '../variables/Variable';
 import type * as nodes from './node-unions';
+import type { ArrayPatternParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import type { ExpressionEntity } from './shared/Expression';
 import { NodeBase } from './shared/Node';
@@ -15,6 +16,7 @@ export default class ArrayPattern
 	extends NodeBase<ast.ArrayPattern>
 	implements DeclarationPatternNode
 {
+	parent!: ArrayPatternParent;
 	elements!: (nodes.DestructuringPattern | null)[];
 	type!: NodeType.tArrayPattern;
 

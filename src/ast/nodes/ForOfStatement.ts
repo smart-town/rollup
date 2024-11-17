@@ -7,6 +7,7 @@ import type ChildScope from '../scopes/ChildScope';
 import type { ObjectPath } from '../utils/PathTracker';
 import { EMPTY_PATH, UNKNOWN_PATH } from '../utils/PathTracker';
 import type * as nodes from './node-unions';
+import type { ForOfStatementParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
 import { UNKNOWN_EXPRESSION } from './shared/Expression';
@@ -15,6 +16,7 @@ import { type IncludeChildren, NodeBase } from './shared/Node';
 import type VariableDeclaration from './VariableDeclaration';
 
 export default class ForOfStatement extends NodeBase<ast.ForOfStatement> {
+	parent!: ForOfStatementParent;
 	body!: nodes.Statement;
 	left!: VariableDeclaration | nodes.DestructuringPattern;
 	right!: nodes.Expression;

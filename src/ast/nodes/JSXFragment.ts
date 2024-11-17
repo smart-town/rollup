@@ -4,10 +4,12 @@ import type { RenderOptions } from '../../utils/renderHelpers';
 import type JSXClosingFragment from './JSXClosingFragment';
 import type JSXOpeningFragment from './JSXOpeningFragment';
 import type * as nodes from './node-unions';
+import type { JSXFragmentParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import JSXElementBase from './shared/JSXElementBase';
 
 export default class JSXFragment extends JSXElementBase<ast.JSXFragment> {
+	parent!: JSXFragmentParent;
 	type!: NodeType.tJSXElement;
 	openingFragment!: JSXOpeningFragment;
 	children!: nodes.JSXChild[];

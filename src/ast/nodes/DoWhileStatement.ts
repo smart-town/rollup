@@ -2,11 +2,13 @@ import type { ast } from '../../rollup/types';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import { type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
 import type * as nodes from './node-unions';
+import type { DoWhileStatementParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { hasLoopBodyEffects, includeLoopBody } from './shared/loops';
 import { type IncludeChildren, NodeBase } from './shared/Node';
 
 export default class DoWhileStatement extends NodeBase<ast.DoWhileStatement> {
+	parent!: DoWhileStatementParent;
 	body!: nodes.Statement;
 	test!: nodes.Expression;
 	type!: NodeType.tDoWhileStatement;

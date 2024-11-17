@@ -8,10 +8,12 @@ import { INTERACTION_ACCESSED } from '../NodeInteractions';
 import ModuleScope from '../scopes/ModuleScope';
 import type { EntityPathTracker, ObjectPath } from '../utils/PathTracker';
 import type Variable from '../variables/Variable';
+import type { ThisExpressionParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { NodeBase } from './shared/Node';
 
 export default class ThisExpression extends NodeBase<ast.ThisExpression> {
+	parent!: ThisExpressionParent;
 	type!: NodeType.tThisExpression;
 	variable!: Variable;
 	private alias!: string | null;

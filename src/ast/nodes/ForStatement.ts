@@ -6,12 +6,14 @@ import BlockScope from '../scopes/BlockScope';
 import type ChildScope from '../scopes/ChildScope';
 import { type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
 import type * as nodes from './node-unions';
+import type { ForStatementParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { hasLoopBodyEffects, includeLoopBody } from './shared/loops';
 import { type IncludeChildren, NodeBase } from './shared/Node';
 import type VariableDeclaration from './VariableDeclaration';
 
 export default class ForStatement extends NodeBase<ast.ForStatement> {
+	parent!: ForStatementParent;
 	body!: nodes.Statement;
 	init!: VariableDeclaration | nodes.Expression | null;
 	test!: nodes.Expression | null;

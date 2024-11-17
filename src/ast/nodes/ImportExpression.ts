@@ -22,6 +22,7 @@ import FunctionExpression from './FunctionExpression';
 import Identifier from './Identifier';
 import MemberExpression from './MemberExpression';
 import type * as nodes from './node-unions';
+import type { ImportExpressionParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import ObjectPattern from './ObjectPattern';
 import { type IncludeChildren, NodeBase } from './shared/Node';
@@ -33,6 +34,7 @@ interface DynamicImportMechanism {
 }
 
 export default class ImportExpression extends NodeBase<ast.ImportExpression> {
+	parent!: ImportExpressionParent;
 	options!: nodes.Expression | null;
 	inlineNamespace: NamespaceVariable | null = null;
 	source!: nodes.Expression;

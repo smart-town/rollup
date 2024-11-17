@@ -13,11 +13,13 @@ import { UNDEFINED_EXPRESSION } from '../values';
 import ClassExpression from './ClassExpression';
 import Identifier from './Identifier';
 import type * as nodes from './node-unions';
+import type { VariableDeclaratorParent } from './node-unions';
 import * as NodeType from './NodeType';
 import { type IncludeChildren, NodeBase } from './shared/Node';
 import type { VariableKind } from './shared/VariableKinds';
 
 export default class VariableDeclarator extends NodeBase<ast.VariableDeclarator> {
+	parent!: VariableDeclaratorParent;
 	id!: nodes.BindingPattern;
 	init!: nodes.Expression | null;
 	type!: NodeType.tVariableDeclarator;

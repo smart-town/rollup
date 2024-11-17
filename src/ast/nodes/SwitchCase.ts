@@ -9,10 +9,12 @@ import {
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import { type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
 import type * as nodes from './node-unions';
+import type { SwitchCaseParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { type IncludeChildren, NodeBase } from './shared/Node';
 
 export default class SwitchCase extends NodeBase<ast.SwitchCase> {
+	parent!: SwitchCaseParent;
 	consequent!: readonly nodes.Statement[];
 	needsBoundaries!: true;
 	test!: nodes.Expression | null;

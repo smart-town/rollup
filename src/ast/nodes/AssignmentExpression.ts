@@ -24,11 +24,13 @@ import { EMPTY_PATH, type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker'
 import type Variable from '../variables/Variable';
 import Identifier from './Identifier';
 import type * as nodes from './node-unions';
+import type { AssignmentExpressionParent } from './node-unions';
 import * as NodeType from './NodeType';
 import ObjectPattern from './ObjectPattern';
 import { type IncludeChildren, NodeBase } from './shared/Node';
 
 export default class AssignmentExpression extends NodeBase<ast.AssignmentExpression> {
+	parent!: AssignmentExpressionParent;
 	left!: nodes.DestructuringPattern;
 	operator!: ast.AssignmentExpression['operator'];
 	right!: nodes.Expression;

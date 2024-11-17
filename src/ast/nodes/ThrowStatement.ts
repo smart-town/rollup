@@ -4,10 +4,12 @@ import type { RenderOptions } from '../../utils/renderHelpers';
 import { type InclusionContext } from '../ExecutionContext';
 import { type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
 import type * as nodes from './node-unions';
+import type { ThrowStatementParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { type IncludeChildren, NodeBase } from './shared/Node';
 
 export default class ThrowStatement extends NodeBase<ast.ThrowStatement> {
+	parent!: ThrowStatementParent;
 	argument!: nodes.Expression;
 	type!: NodeType.tThrowStatement;
 

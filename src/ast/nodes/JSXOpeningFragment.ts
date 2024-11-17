@@ -4,11 +4,13 @@ import type { RenderOptions } from '../../utils/renderHelpers';
 import type { InclusionContext } from '../ExecutionContext';
 import type { ObjectPath } from '../utils/PathTracker';
 import type Variable from '../variables/Variable';
+import type { JSXOpeningFragmentParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { getAndIncludeFactoryVariable } from './shared/jsxHelpers';
 import { type IncludeChildren, NodeBase } from './shared/Node';
 
 export default class JSXOpeningFragment extends NodeBase<ast.JSXOpeningFragment> {
+	parent!: JSXOpeningFragmentParent;
 	type!: NodeType.tJSXOpeningElement;
 	attributes!: never[];
 	selfClosing!: false;

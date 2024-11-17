@@ -13,6 +13,7 @@ import { EMPTY_PATH, SHARED_RECURSION_TRACKER, UNKNOWN_PATH } from '../utils/Pat
 import Identifier from './Identifier';
 import MemberExpression from './MemberExpression';
 import type * as nodes from './node-unions';
+import type { CallExpressionParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
 import CallExpressionBase from './shared/CallExpressionBase';
@@ -28,6 +29,7 @@ export default class CallExpression
 	extends CallExpressionBase<ast.CallExpression>
 	implements DeoptimizableEntity, ChainElement
 {
+	parent!: CallExpressionParent;
 	arguments!: (nodes.Expression | SpreadElement)[];
 	callee!: nodes.Expression | Super;
 	type!: NodeType.tCallExpression;

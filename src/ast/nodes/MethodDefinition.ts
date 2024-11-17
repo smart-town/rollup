@@ -4,11 +4,13 @@ import { checkEffectForNodes } from '../utils/checkEffectForNodes';
 import type Decorator from './Decorator';
 import type FunctionExpression from './FunctionExpression';
 import type * as nodes from './node-unions';
+import type { MethodDefinitionParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import type PrivateIdentifier from './PrivateIdentifier';
 import PropertyBase from './shared/PropertyBase';
 
 export default class MethodDefinition extends PropertyBase<ast.MethodDefinition> {
+	parent!: MethodDefinitionParent;
 	key!: nodes.Expression | PrivateIdentifier;
 	kind!: ast.MethodDefinition['kind'];
 	static!: boolean;

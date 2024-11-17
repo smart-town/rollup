@@ -4,10 +4,12 @@ import type { NodeRenderOptions, RenderOptions } from '../../utils/renderHelpers
 import type JSXAttribute from './JSXAttribute';
 import type JSXSpreadAttribute from './JSXSpreadAttribute';
 import type * as nodes from './node-unions';
+import type { JSXOpeningElementParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { NodeBase } from './shared/Node';
 
 export default class JSXOpeningElement extends NodeBase<ast.JSXOpeningElement> {
+	parent!: JSXOpeningElementParent;
 	type!: NodeType.tJSXOpeningElement;
 	name!: nodes.JSXTagNameExpression;
 	attributes!: (JSXAttribute | JSXSpreadAttribute)[];

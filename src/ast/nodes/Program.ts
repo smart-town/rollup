@@ -12,10 +12,12 @@ import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import { createHasEffectsContext } from '../ExecutionContext';
 import { type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
 import type * as nodes from './node-unions';
+import type { ProgramParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { type IncludeChildren, NodeBase } from './shared/Node';
 
 export default class Program extends NodeBase<ast.Program> {
+	parent!: ProgramParent;
 	body!: readonly (nodes.Statement | nodes.ModuleDeclaration)[];
 	sourceType!: 'module';
 	type!: NodeType.tProgram;

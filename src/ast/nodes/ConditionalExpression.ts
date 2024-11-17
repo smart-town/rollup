@@ -13,6 +13,7 @@ import type { NodeInteraction, NodeInteractionCalled } from '../NodeInteractions
 import type { EntityPathTracker, ObjectPath } from '../utils/PathTracker';
 import { EMPTY_PATH, SHARED_RECURSION_TRACKER, UNKNOWN_PATH } from '../utils/PathTracker';
 import type * as nodes from './node-unions';
+import type { ConditionalExpressionParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
 import type { ExpressionEntity, LiteralValueOrUnknown } from './shared/Expression';
@@ -25,6 +26,7 @@ export default class ConditionalExpression
 	extends NodeBase<ast.ConditionalExpression>
 	implements DeoptimizableEntity
 {
+	parent!: ConditionalExpressionParent;
 	alternate!: nodes.Expression;
 	consequent!: nodes.Expression;
 	test!: nodes.Expression;

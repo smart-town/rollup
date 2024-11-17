@@ -2,11 +2,13 @@ import type { ast } from '../../rollup/types';
 import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import { type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
 import type * as nodes from './node-unions';
+import type { WhileStatementParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { hasLoopBodyEffects, includeLoopBody } from './shared/loops';
 import { type IncludeChildren, NodeBase } from './shared/Node';
 
 export default class WhileStatement extends NodeBase<ast.WhileStatement> {
+	parent!: WhileStatementParent;
 	body!: nodes.Statement;
 	test!: nodes.Expression;
 	type!: NodeType.tWhileStatement;

@@ -3,10 +3,12 @@ import type { HasEffectsContext, InclusionContext } from '../ExecutionContext';
 import { type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
 import type BlockStatement from './BlockStatement';
 import type CatchClause from './CatchClause';
+import type { TryStatementParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { INCLUDE_PARAMETERS, type IncludeChildren, NodeBase } from './shared/Node';
 
 export default class TryStatement extends NodeBase<ast.TryStatement> {
+	parent!: TryStatementParent;
 	block!: BlockStatement;
 	finalizer!: BlockStatement | null;
 	handler!: CatchClause | null;

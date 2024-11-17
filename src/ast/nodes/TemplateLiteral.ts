@@ -13,11 +13,13 @@ import {
 import type * as NodeType from './NodeType';
 import type TemplateElement from './TemplateElement';
 import type * as nodes from './node-unions';
+import type { TemplateLiteralParent } from './node-unions';
 import type { ExpressionEntity, LiteralValueOrUnknown } from './shared/Expression';
 import { UNKNOWN_RETURN_EXPRESSION, UnknownValue } from './shared/Expression';
 import { NodeBase } from './shared/Node';
 
 export default class TemplateLiteral extends NodeBase<ast.TemplateLiteral> {
+	parent!: TemplateLiteralParent;
 	expressions!: nodes.Expression[];
 	quasis!: TemplateElement[];
 	type!: NodeType.tTemplateLiteral;

@@ -2,10 +2,12 @@ import type MagicString from 'magic-string';
 import type { ast, NormalizedJsxOptions } from '../../rollup/types';
 import type { RenderOptions } from '../../utils/renderHelpers';
 import type * as nodes from './node-unions';
+import type { JSXSpreadChildParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { NodeBase } from './shared/Node';
 
 export default class JSXSpreadChild extends NodeBase<ast.JSXSpreadChild> {
+	parent!: JSXSpreadChildParent;
 	type!: NodeType.tJSXSpreadChild;
 	expression!: nodes.Expression;
 

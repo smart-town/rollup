@@ -4,11 +4,13 @@ import type { RenderOptions } from '../../utils/renderHelpers';
 import { type HasEffectsContext, type InclusionContext } from '../ExecutionContext';
 import { type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
 import type * as nodes from './node-unions';
+import type { ReturnStatementParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { UNKNOWN_EXPRESSION } from './shared/Expression';
 import { type IncludeChildren, NodeBase } from './shared/Node';
 
 export default class ReturnStatement extends NodeBase<ast.ReturnStatement> {
+	parent!: ReturnStatementParent;
 	argument!: nodes.Expression | null;
 	type!: NodeType.tReturnStatement;
 

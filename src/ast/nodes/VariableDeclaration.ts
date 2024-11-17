@@ -20,6 +20,7 @@ import { EMPTY_PATH, UNKNOWN_PATH } from '../utils/PathTracker';
 import type Variable from '../variables/Variable';
 import ArrayPattern from './ArrayPattern';
 import Identifier, { type IdentifierWithVariable } from './Identifier';
+import type { VariableDeclarationParent } from './node-unions';
 import * as NodeType from './NodeType';
 import ObjectPattern from './ObjectPattern';
 import type { InclusionOptions } from './shared/Expression';
@@ -44,6 +45,7 @@ function areAllDeclarationsIncludedAndNotExported(
 }
 
 export default class VariableDeclaration extends NodeBase<ast.VariableDeclaration> {
+	parent!: VariableDeclarationParent;
 	declarations!: readonly VariableDeclarator[];
 	kind!: ast.VariableDeclaration['kind'];
 	type!: NodeType.tVariableDeclaration;

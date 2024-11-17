@@ -14,11 +14,13 @@ import type { NodeInteraction } from '../NodeInteractions';
 import { type EntityPathTracker, type ObjectPath } from '../utils/PathTracker';
 import ExpressionStatement from './ExpressionStatement';
 import type * as nodes from './node-unions';
+import type { SequenceExpressionParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import type { LiteralValueOrUnknown } from './shared/Expression';
 import { type IncludeChildren, NodeBase } from './shared/Node';
 
 export default class SequenceExpression extends NodeBase<ast.SequenceExpression> {
+	parent!: SequenceExpressionParent;
 	expressions!: nodes.Expression[];
 	type!: NodeType.tSequenceExpression;
 

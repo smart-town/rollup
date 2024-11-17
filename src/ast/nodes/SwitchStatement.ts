@@ -10,12 +10,14 @@ import BlockScope from '../scopes/BlockScope';
 import type ChildScope from '../scopes/ChildScope';
 import { type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
 import type * as nodes from './node-unions';
+import type { SwitchStatementParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import type { IncludeChildren } from './shared/Node';
 import { NodeBase } from './shared/Node';
 import type SwitchCase from './SwitchCase';
 
 export default class SwitchStatement extends NodeBase<ast.SwitchStatement> {
+	parent!: SwitchStatementParent;
 	cases!: readonly SwitchCase[];
 	discriminant!: nodes.Expression;
 	type!: NodeType.tSwitchStatement;

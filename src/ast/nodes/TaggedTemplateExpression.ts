@@ -9,6 +9,7 @@ import type { EntityPathTracker, ObjectPath } from '../utils/PathTracker';
 import { EMPTY_PATH, SHARED_RECURSION_TRACKER, UNKNOWN_PATH } from '../utils/PathTracker';
 import MemberExpression from './MemberExpression';
 import type * as nodes from './node-unions';
+import type { TaggedTemplateExpressionParent } from './node-unions';
 import * as NodeType from './NodeType';
 import CallExpressionBase from './shared/CallExpressionBase';
 import type { ExpressionEntity } from './shared/Expression';
@@ -17,6 +18,7 @@ import type { IncludeChildren } from './shared/Node';
 import type TemplateLiteral from './TemplateLiteral';
 
 export default class TaggedTemplateExpression extends CallExpressionBase<ast.TaggedTemplateExpression> {
+	parent!: TaggedTemplateExpressionParent;
 	quasi!: TemplateLiteral;
 	tag!: nodes.Expression;
 	type!: NodeType.tTaggedTemplateExpression;

@@ -15,6 +15,7 @@ import {
 import ExpressionStatement from './ExpressionStatement';
 import type { LiteralValue } from './Literal';
 import type * as nodes from './node-unions';
+import type { BinaryExpressionParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { type LiteralValueOrUnknown, UnknownValue } from './shared/Expression';
 import { NodeBase } from './shared/Node';
@@ -52,6 +53,7 @@ export default class BinaryExpression
 	extends NodeBase<ast.BinaryExpression>
 	implements DeoptimizableEntity
 {
+	parent!: BinaryExpressionParent;
 	left!: nodes.Expression;
 	operator!: ast.BinaryExpression['operator'];
 	right!: nodes.Expression;

@@ -6,9 +6,9 @@ import { type HasEffectsContext, type InclusionContext } from '../ExecutionConte
 import TrackingScope from '../scopes/TrackingScope';
 import type { ObjectPath } from '../utils/PathTracker';
 import { EMPTY_PATH, SHARED_RECURSION_TRACKER, UNKNOWN_PATH } from '../utils/PathTracker';
-import BlockStatement from './BlockStatement';
 import type Identifier from './Identifier';
 import type * as nodes from './node-unions';
+import type { IfStatementParent } from './node-unions';
 import * as NodeType from './NodeType';
 import { type LiteralValueOrUnknown, UnknownValue } from './shared/Expression';
 import { type IncludeChildren, NodeBase } from './shared/Node';
@@ -16,6 +16,7 @@ import { type IncludeChildren, NodeBase } from './shared/Node';
 const unset = Symbol('unset');
 
 export default class IfStatement extends NodeBase<ast.IfStatement> implements DeoptimizableEntity {
+	parent!: IfStatementParent;
 	alternate!: nodes.Statement | null;
 	consequent!: nodes.Statement;
 	test!: nodes.Expression;
@@ -196,15 +197,15 @@ export default class IfStatement extends NodeBase<ast.IfStatement> implements De
 	}
 
 	private shouldKeepAlternateBranch() {
-		let currentParent = this.parent;
+		let currentParent: nodes.AstNode | null = this.parent;
 		do {
-			if (currentParent instanceof IfStatement && currentParent.alternate) {
+			if (currentParent.type === NodeType.IfStatement && currentParent.alternate) {
 				return true;
 			}
-			if (currentParent instanceof BlockStatement) {
+			if (currentParent.type === NodeType.BlockStatement) {
 				return false;
 			}
-			currentParent = (currentParent as any).parent;
+			currentParent = currentParent.parent;
 		} while (currentParent);
 		return false;
 	}

@@ -3,10 +3,12 @@ import type { ast } from '../../rollup/types';
 import type { RenderOptions } from '../../utils/renderHelpers';
 import type { HasEffectsContext } from '../ExecutionContext';
 import type * as nodes from './node-unions';
+import type { YieldExpressionParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { NodeBase } from './shared/Node';
 
 export default class YieldExpression extends NodeBase<ast.YieldExpression> {
+	parent!: YieldExpressionParent;
 	argument!: nodes.Expression | null;
 	delegate!: boolean;
 	type!: NodeType.tYieldExpression;

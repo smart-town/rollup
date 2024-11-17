@@ -8,6 +8,7 @@ import { EMPTY_PATH, type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker'
 import type LocalVariable from '../variables/LocalVariable';
 import type Variable from '../variables/Variable';
 import type * as nodes from './node-unions';
+import type { AssignmentPatternParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import type { ExpressionEntity } from './shared/Expression';
 import { NodeBase } from './shared/Node';
@@ -18,6 +19,7 @@ export default class AssignmentPattern
 	extends NodeBase<ast.AssignmentPattern>
 	implements DeclarationPatternNode
 {
+	parent!: AssignmentPatternParent;
 	left!: nodes.BindingPattern;
 	right!: nodes.Expression;
 	type!: NodeType.tAssignmentPattern;

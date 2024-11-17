@@ -6,10 +6,12 @@ import {
 } from '../ExecutionContext';
 import { type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
 import type Identifier from './Identifier';
+import type { ContinueStatementParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { NodeBase } from './shared/Node';
 
 export default class ContinueStatement extends NodeBase<ast.ContinueStatement> {
+	parent!: ContinueStatementParent;
 	label!: Identifier | null;
 	type!: NodeType.tContinueStatement;
 

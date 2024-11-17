@@ -9,10 +9,12 @@ import type JSXFragment from './JSXFragment';
 import JSXIdentifier from './JSXIdentifier';
 import type JSXNamespacedName from './JSXNamespacedName';
 import type Literal from './Literal';
+import type { JSXAttributeParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { NodeBase } from './shared/Node';
 
 export default class JSXAttribute extends NodeBase<ast.JSXAttribute> {
+	parent!: JSXAttributeParent;
 	type!: NodeType.tJSXAttribute;
 	name!: JSXIdentifier | JSXNamespacedName;
 	value!: Literal | JSXExpressionContainer | JSXElement | JSXFragment | null;

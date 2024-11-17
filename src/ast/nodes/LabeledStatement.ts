@@ -13,10 +13,12 @@ import {
 import { type ObjectPath, UNKNOWN_PATH } from '../utils/PathTracker';
 import type Identifier from './Identifier';
 import type * as nodes from './node-unions';
+import type { LabeledStatementParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { type IncludeChildren, NodeBase } from './shared/Node';
 
 export default class LabeledStatement extends NodeBase<ast.LabeledStatement> {
+	parent!: LabeledStatementParent;
 	body!: nodes.Statement;
 	label!: Identifier;
 	type!: NodeType.tLabeledStatement;

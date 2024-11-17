@@ -20,6 +20,7 @@ import {
 	UNKNOWN_PATH
 } from '../utils/PathTracker';
 import type * as nodes from './node-unions';
+import type { LogicalExpressionParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
 import {
@@ -34,6 +35,7 @@ export default class LogicalExpression
 	extends NodeBase<ast.LogicalExpression>
 	implements DeoptimizableEntity
 {
+	parent!: LogicalExpressionParent;
 	left!: nodes.Expression;
 	operator!: ast.LogicalExpression['operator'];
 	right!: nodes.Expression;

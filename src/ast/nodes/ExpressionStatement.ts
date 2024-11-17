@@ -5,12 +5,15 @@ import { logModuleLevelDirective } from '../../utils/logs';
 import type { RenderOptions } from '../../utils/renderHelpers';
 import type { InclusionContext } from '../ExecutionContext';
 import type * as nodes from './node-unions';
+import type { ExpressionStatementParent } from './node-unions';
 import * as NodeType from './NodeType';
 import { NodeBase } from './shared/Node';
 
 export default class ExpressionStatement extends NodeBase<ast.ExpressionStatement> {
+	parent!: ExpressionStatementParent;
 	directive?: string;
 	expression!: nodes.Expression;
+	type!: NodeType.tExpressionStatement;
 
 	initialise(): void {
 		super.initialise();

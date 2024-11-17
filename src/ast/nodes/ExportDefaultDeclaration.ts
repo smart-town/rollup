@@ -16,6 +16,7 @@ import ClassDeclaration from './ClassDeclaration';
 import FunctionDeclaration from './FunctionDeclaration';
 import type Identifier from './Identifier';
 import type * as nodes from './node-unions';
+import type { ExportDefaultDeclarationParent } from './node-unions';
 import * as NodeType from './NodeType';
 import { type IncludeChildren, NodeBase } from './shared/Node';
 
@@ -36,6 +37,7 @@ function getFunctionIdInsertPosition(code: string, start: number): number {
 }
 
 export default class ExportDefaultDeclaration extends NodeBase<ast.ExportDefaultDeclaration> {
+	parent!: ExportDefaultDeclarationParent;
 	declaration!: FunctionDeclaration | ClassDeclaration | nodes.Expression;
 	needsBoundaries!: true;
 	scope!: ModuleScope;

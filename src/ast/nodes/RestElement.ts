@@ -5,6 +5,7 @@ import { EMPTY_PATH, type ObjectPath, UnknownKey } from '../utils/PathTracker';
 import type LocalVariable from '../variables/LocalVariable';
 import type Variable from '../variables/Variable';
 import type * as nodes from './node-unions';
+import type { RestElementParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { type ExpressionEntity } from './shared/Expression';
 import type { IncludeChildren } from './shared/Node';
@@ -16,6 +17,7 @@ export default class RestElement
 	extends NodeBase<ast.RestElement>
 	implements DeclarationPatternNode
 {
+	parent!: RestElementParent;
 	argument!: nodes.DestructuringPattern;
 	type!: NodeType.tRestElement;
 	private declarationInit: ExpressionEntity | null = null;

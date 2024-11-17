@@ -7,6 +7,7 @@ import type ChildScope from '../scopes/ChildScope';
 import type { ObjectPath } from '../utils/PathTracker';
 import { EMPTY_PATH, UNKNOWN_PATH } from '../utils/PathTracker';
 import type * as nodes from './node-unions';
+import type { ForInStatementParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { UNKNOWN_EXPRESSION } from './shared/Expression';
 import { hasLoopBodyEffects, includeLoopBody } from './shared/loops';
@@ -14,6 +15,7 @@ import { type IncludeChildren, NodeBase } from './shared/Node';
 import type VariableDeclaration from './VariableDeclaration';
 
 export default class ForInStatement extends NodeBase<ast.ForInStatement> {
+	parent!: ForInStatementParent;
 	body!: nodes.Statement;
 	left!: VariableDeclaration | nodes.DestructuringPattern;
 	right!: nodes.Expression;

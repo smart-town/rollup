@@ -4,11 +4,13 @@ import ParameterScope from '../scopes/ParameterScope';
 import { EMPTY_PATH } from '../utils/PathTracker';
 import BlockStatement from './BlockStatement';
 import type * as nodes from './node-unions';
+import type { CatchClauseParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { UNKNOWN_EXPRESSION } from './shared/Expression';
 import { NodeBase } from './shared/Node';
 
 export default class CatchClause extends NodeBase<ast.CatchClause> {
+	parent!: CatchClauseParent;
 	body!: BlockStatement;
 	param!: nodes.BindingPattern | null;
 	preventChildBlockScope!: true;

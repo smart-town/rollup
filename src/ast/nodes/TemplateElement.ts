@@ -1,9 +1,11 @@
 import type { ast } from '../../rollup/types';
+import type { TemplateElementParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
 import { NodeBase } from './shared/Node';
 
 export default class TemplateElement extends NodeBase<ast.TemplateElement> {
+	parent!: TemplateElementParent;
 	type!: NodeType.tTemplateElement;
 	value!: {
 		cooked?: string;

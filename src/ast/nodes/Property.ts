@@ -9,6 +9,7 @@ import type LocalVariable from '../variables/LocalVariable';
 import Identifier from './Identifier';
 import type Literal from './Literal';
 import type * as nodes from './node-unions';
+import type { PropertyParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { Flag, isFlagSet, setFlag } from './shared/BitFlags';
 import { type ExpressionEntity } from './shared/Expression';
@@ -18,6 +19,7 @@ import PropertyBase from './shared/PropertyBase';
 import type { VariableKind } from './shared/VariableKinds';
 
 export default class Property extends PropertyBase<ast.Property> implements DeclarationPatternNode {
+	parent!: PropertyParent;
 	key!: nodes.Expression;
 	kind!: ast.Property['kind'];
 	type!: NodeType.tProperty;

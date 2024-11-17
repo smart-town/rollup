@@ -9,10 +9,12 @@ import {
 	UnknownKey
 } from '../utils/PathTracker';
 import type * as nodes from './node-unions';
+import type { SpreadElementParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import { NodeBase } from './shared/Node';
 
 export default class SpreadElement extends NodeBase<ast.SpreadElement> {
+	parent!: SpreadElementParent;
 	argument!: nodes.Expression;
 	type!: NodeType.tSpreadElement;
 

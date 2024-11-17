@@ -6,11 +6,13 @@ import type JSXClosingElement from './JSXClosingElement';
 import type JSXOpeningElement from './JSXOpeningElement';
 import JSXSpreadAttribute from './JSXSpreadAttribute';
 import type * as nodes from './node-unions';
+import type { JSXElementParent } from './node-unions';
 import type * as NodeType from './NodeType';
 import JSXElementBase from './shared/JSXElementBase';
 import type { JsxMode } from './shared/jsxHelpers';
 
 export default class JSXElement extends JSXElementBase<ast.JSXElement> {
+	parent!: JSXElementParent;
 	type!: NodeType.tJSXElement;
 	openingElement!: JSXOpeningElement;
 	closingElement!: JSXClosingElement | null;
