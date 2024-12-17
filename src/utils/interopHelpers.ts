@@ -304,7 +304,7 @@ const copyOwnPropertyLiveBinding = (
 	});
 	return (
 		`${index}${cnst} d${_}=${_}Object.getOwnPropertyDescriptor(e,${_}k);${n}` +
-		`${index}Object.defineProperty(n,${_}k,${_}d.get${_}?${_}d${_}:${_}{${n}` +
+		`${index}Object.defineProperty(n,${_}k,${_}d&&d.get${_}?${_}d${_}:${_}{${n}` +
 		`${index}${t}enumerable:${_}true,${n}` +
 		`${index}${t}get:${_}${left}e[k]${right}${n}` +
 		`${index}});${n}`
